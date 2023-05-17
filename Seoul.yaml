@@ -658,7 +658,7 @@ Resources:
             - Key: Name
               Value: VPC1-Seoul-AWS-VPNConnection-IDC
 
-# GA
+## GA ##
   GlobalAccelerator:
       Type: AWS::GlobalAccelerator::Accelerator
       Properties:
@@ -687,7 +687,6 @@ Resources:
       ThresholdCount: 5
       EndpointConfigurations:
         - EndpointId: !Ref ALB
-
 
 ## IDC Seoul VPC (VPC2) ##
 
@@ -753,18 +752,10 @@ Resources:
           Value: VPC2-Seoul-IDC-VPC2RT1
   VPC2Route1:
     Type: AWS::EC2::Route
-    DependsOn: VPC2IGWAtt1
     Properties:
       RouteTableId: !Ref VPC2RT1
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: !Ref VPC2IGW1
-
-  VPC2SN1RTAsso:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      RouteTableId: !Ref VPC2RT1
-      SubnetId: !Ref VPC2SN1
-
+      # GatewayId: !Ref VPC2IGW1
   VPC2Route2:
     Type: AWS::EC2::Route
     DependsOn: VPC2Instance1
@@ -772,6 +763,14 @@ Resources:
       RouteTableId: !Ref VPC2RT1
       DestinationCidrBlock: 10.0.0.0/8
       InstanceId: !Ref VPC2Instance1
+
+  VPC2SN1RTAsso:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref VPC2RT1
+      SubnetId: !Ref VPC2SN1
+
+## VPC2 Instance ##
 
   VPC2Instance1ENI:
     Type: AWS::EC2::NetworkInterface
@@ -792,8 +791,6 @@ Resources:
       Properties:
           AllocationId: !GetAtt VPCEIP1.AllocationId
           NetworkInterfaceId: !Ref VPC2Instance1ENI
-
-## VPC2 Instance ##
 
   VPC2Instance1:
     Type: AWS::EC2::Instance
