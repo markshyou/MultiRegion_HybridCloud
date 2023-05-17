@@ -718,17 +718,17 @@ Resources:
       DhcpOptionsId: !Ref VPC2DHCPOptions
       VpcId: !Ref VPC2
 
-  # VPC2IGW1:
-  #   Type: AWS::EC2::InternetGateway
-  #   Properties:
-  #     Tags:
-  #       - Key: Name
-  #         Value: VPC2-Seoul-IDC-IGW1
-  # VPC2IGWAtt1:
-  #   Type: AWS::EC2::VPCGatewayAttachment
-  #   Properties:
-  #     InternetGatewayId: !Ref VPC2IGW1
-  #     VpcId: !Ref VPC2
+  VPC2IGW1:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: VPC2-Seoul-IDC-IGW1
+  VPC2IGWAtt1:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !Ref VPC2IGW1
+      VpcId: !Ref VPC2
 
 ## VPC2 Subnet / RT ##
   
@@ -755,7 +755,7 @@ Resources:
     Properties:
       RouteTableId: !Ref VPC2RT1
       DestinationCidrBlock: 0.0.0.0/0
-      # GatewayId: !Ref VPC2IGW1
+      GatewayId: !Ref VPC2IGW1
   VPC2Route2:
     Type: AWS::EC2::Route
     DependsOn: VPC2Instance1
