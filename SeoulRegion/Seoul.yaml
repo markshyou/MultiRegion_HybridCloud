@@ -1075,6 +1075,7 @@ Resources:
         CidrIp: 0.0.0.0/0
 
 Outputs:
+## GAListenerARN DNS주소를 복사해서 Singapore 스택 생성 시 Parameter에 입력해야 함 ##
   GAListenerARN:
     Description: Global Accelerator Arn
     Value: !GetAtt GAListener.ListenerArn
