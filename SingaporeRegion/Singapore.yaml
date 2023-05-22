@@ -832,7 +832,7 @@ Resources:
   VPC2Instance3:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-028a5cff2f5a0f6c3
+      ImageId: ami-0a72af05d27b49ccb
       InstanceType: t2.micro
       KeyName: !Ref KeyName
       Tags:
