@@ -12,7 +12,7 @@ Parameters:
 
 Resources:
 
-## AWS Seoul VPC (VPC1) ##
+## AWS Seoul VPC (VPC1) ###
 
   VPC1:
     Type: AWS::EC2::VPC
